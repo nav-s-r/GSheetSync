@@ -1,16 +1,16 @@
 Getting Started
 ===============
-GSync is an Apps Script library to create, update and remove rows of data from a Google Sheets Spreadsheet. Inspired from the python module sheetsync_.
+GSheetSync is an Apps Script library to create, update and remove rows of data from a Google Sheets Spreadsheet. Inspired from the python module sheetsync_.
 
 Motivation
 -----------
 Being able to query data using Google's BigQuery API in Apps Script and write that data directly onto a Google Sheets Spreadsheet, with the sync/inject functionality sheetsync_ provided.
 
-This guide will get you set up to use GSync in Google's Script Editor within a few minutes.
+This guide will get you set up to use GSheetSync in Google's Script Editor within a few minutes.
 
 .. _sheetsync: http://sheetsync.readthedocs.io/en/latest
 
-Installing GSync
+Installing GSheetSync
 -----------------
 First you need to open script editor. This is Google's very own development environment.
 If you're new to Apps Script:
@@ -29,7 +29,7 @@ In Script Editor:
 
 1. Click on the menu item "Resources" > "Libraries"
 2. You should be prompted to enter a project name, choose a name and create the project
-3. In the "Add a Library" text box, enter ``MVGtTt7Mo-6r8RMIqhlfeEXhvv_Un2E2U``
+3. In the "Add a Library" text box, enter ``Moy3-vJh6VqHfyCZp1_rX-v1b9DGPvv-L``
 4. Choose a version from the dropdown box (best to pick the latest version)
 5. If you happen to have editor-level access for this library, ensure "Development Mode" is "off", otherwise it does not matter
 6. Click the "Save" button
@@ -39,7 +39,7 @@ In Script Editor:
 Enbaling APIs
 -------------
 
-Two Google Advances API Services will need to be enabled before you continue with GSync:
+Two Google Advances API Services will need to be enabled before you continue with GSheetSync:
 
 - Sheets API (V4)
 - BigQuery API (V2)
@@ -72,7 +72,7 @@ Repeat this for "BigQuery API" (ignoring "Bigquery Data Transfer API")
 Injecting data to a Sheet
 -------------------------
 
-GSync accepts data in a specific format.
+GSheetSync accepts data in a specific format.
 The input data must be an array of JSON object literals. Each object within the array represents one row of data. Each key value pair represents a column header and its cell value.
 
 The following array represents 3 rows of data, mapped by their column headers:
@@ -101,9 +101,9 @@ To inject this data into a spreadsheet, use the following code:
       var sheet = SpreadsheetApp.getActiveSheet();
       
 
-      var target = new GSync.GSyncTable(sheet,
-                                        headerRow, 
-                                        keyHeader);
+      var target = new GSheetSync.GSyncTable(sheet,
+                                             headerRow, 
+                                             keyHeader);
       
       target.inject(data);
     }

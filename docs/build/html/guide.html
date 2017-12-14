@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. Complete Tutorial &mdash; GSync 1 documentation</title>
+  <title>2. Complete Tutorial &mdash; GSheetSync 1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="GSync 1 documentation" href="index.html"/>
+    <link rel="top" title="GSheetSync 1 documentation" href="index.html"/>
         <link rel="prev" title="1. Getting Started" href="installation.html"/> 
 
   
@@ -55,7 +55,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> GSync
+            <a href="index.html" class="icon icon-home"> GSheetSync
           
 
           
@@ -93,7 +93,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">1. Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Complete Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#gsync-at-a-glance">2.1. GSync At A Glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gsheetsync-at-a-glance">2.1. GSheetSync At A Glance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#so-what-can-you-do">2.2. So what can you do?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#syncing-data">2.2.1. Syncing Data:</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#flagging-as-deleted">2.2.1.1. Flagging As Deleted:</a></li>
@@ -126,7 +126,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">GSync</a>
+          <a href="index.html">GSheetSync</a>
         
       </nav>
 
@@ -177,14 +177,14 @@
             
   <div class="section" id="complete-tutorial">
 <h1>2. Complete Tutorial<a class="headerlink" href="#complete-tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="gsync-at-a-glance">
-<h2>2.1. GSync At A Glance<a class="headerlink" href="#gsync-at-a-glance" title="Permalink to this headline">¶</a></h2>
-<p>This library contains 1 class “GSyncTable” which has 4 methods:</p>
+<div class="section" id="gsheetsync-at-a-glance">
+<h2>2.1. GSheetSync At A Glance<a class="headerlink" href="#gsheetsync-at-a-glance" title="Permalink to this headline">¶</a></h2>
+<p>This library contains 1 class <code class="docutils literal"><span class="pre">GSyncTable</span></code> which has 5 public methods:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">inject</span></code> - Updates the sheet using input data, appends current cell values and adds new rows of data as required.</li>
 <li><code class="docutils literal"><span class="pre">sync</span></code> - Synchronises the sheet with the input data, adding and updating rows where required. Sync also deletes rows if they are not in the input data.</li>
-<li><code class="docutils literal"><span class="pre">convertBigQueryResults</span></code> - Takes a JSON object literal containing BigQuery query results, acquired using Google’s Big query API, and changes the results into the data format accepted by GSync. Creating an array of object literals using column headers to map a row’s cell values.</li>
-<li><code class="docutils literal"><span class="pre">readSheetData</span></code> - Reads the data from a sheet and outputs an array containing objects, the same data structure GSync takes as input.</li>
+<li><code class="docutils literal"><span class="pre">convertBigQueryResults</span></code> - Takes a JSON object literal containing BigQuery query results, acquired using Google’s Big query API, and changes the results into the data format accepted by GSheetSync. Creating an array of object literals using column headers to map a row’s cell values.</li>
+<li><code class="docutils literal"><span class="pre">readSheetData</span></code> - Reads the data from a sheet and outputs an array containing objects, the same data structure GSheetSync takes as input.</li>
 <li><code class="docutils literal"><span class="pre">sortByHeaders</span></code> - Sorts the sheet, in ascending or descending order, using the column headers.</li>
 </ul>
 <p>The class takes the following parameters as input:</p>
@@ -230,12 +230,12 @@ This method deletes any rows from the sheet if they are not in the input data. T
 <span class="kd">var</span> <span class="nx">headerRow</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">();</span>
 
-<span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GSync</span><span class="p">.</span><span class="nx">GSyncTable</span><span class="p">(</span><span class="nx">sheet</span><span class="p">,</span>
-                                  <span class="nx">headerRow</span><span class="p">,</span>
-                                  <span class="nx">keyHeader</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GSheetSync</span><span class="p">.</span><span class="nx">GSyncTable</span><span class="p">(</span><span class="nx">sheet</span><span class="p">,</span>
+                                       <span class="nx">headerRow</span><span class="p">,</span>
+                                       <span class="nx">keyHeader</span><span class="p">);</span>
 
 <span class="nx">target</span><span class="p">.</span><span class="nx">sync</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>  <span class="c1">// Notice the data argument followed by a boolean argument</span>
-                           <span class="c1">// false tells GSync to only flag rows for deletion</span>
+                           <span class="c1">// false tells GSheetSync to only flag rows for deletion</span>
 </pre></div>
 </div>
 <p>This updates our sheet to look like:</p>
@@ -314,10 +314,10 @@ This method deletes any rows from the sheet if they are not in the input data. T
 </div>
 <div class="section" id="using-formulae">
 <span id="formula-example"></span><h3>2.2.3. Using Formulae:<a class="headerlink" href="#using-formulae" title="Permalink to this headline">¶</a></h3>
-<p>One of the two optional arguments GSync can take is a formula row number.
-If you specify a formula row number, GSync will read any and all formulae written in the cells of the formula row, and insert them into all new rows of data, intellegently incrementing them to match row and column references.</p>
+<p>One of the two optional arguments GSheetSync can take is a formula row number.
+If you specify a formula row number, GSheetSync will read any and all formulae written in the cells of the formula row, and insert them into all new rows of data, intellegently incrementing them to match row and column references.</p>
 <p>This is an example of inserting a very simple formula into column C.
-The formula demonstrated here is “=B1”, which is entered into cell C1. GSync will intellegently incriments this formula inserting it into the 3 newly added rows of data. So that cell C3 has the formula “=B3”.
+The formula demonstrated here is “=B1”, which is entered into cell C1. GSheetSync will intellegently incriments this formula inserting it into the 3 newly added rows of data. So that cell C3 has the formula “=B3”.
 Formulae are not added in any rows where data was already present, strictly added for new rows.
 The column containing the formula  requires the user to input a header.</p>
 <p>The following code allows you to use a formula on the sheet:</p>
@@ -336,10 +336,10 @@ The column containing the formula  requires the user to input a header.</p>
   <span class="nx">formulaRow</span><span class="o">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GSync</span><span class="p">.</span><span class="nx">GSyncTable</span><span class="p">(</span><span class="nx">sheet</span><span class="p">,</span>
-                                  <span class="nx">headerRow</span><span class="p">,</span>
-                                  <span class="nx">keyHeader</span><span class="p">,</span>
-                                  <span class="nx">optionalArgs</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GSheetSync</span><span class="p">.</span><span class="nx">GSyncTable</span><span class="p">(</span><span class="nx">sheet</span><span class="p">,</span>
+                                       <span class="nx">headerRow</span><span class="p">,</span>
+                                       <span class="nx">keyHeader</span><span class="p">,</span>
+                                       <span class="nx">optionalArgs</span><span class="p">);</span>
 
 <span class="nx">target</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </pre></div>
@@ -350,26 +350,26 @@ The column containing the formula  requires the user to input a header.</p>
 <div class="section" id="protecting-specific-fields">
 <h3>2.2.4. Protecting Specific Fields:<a class="headerlink" href="#protecting-specific-fields" title="Permalink to this headline">¶</a></h3>
 <p>There may be times where you need to ensure that some fields stay protected against overwrites. In a case where there’s field that people are expected to update on the sheet, but you don’t account for this in the raw data, you can protect that field.</p>
-<p>What this means is, if there is an empty cell in that column, and the input data wants to write a value in that cell, it will be written by GSync. However, if a cell in that protected column is not blank (someone has purposely changed the value of the cell) then GSync will not overwrite that cell.</p>
-<p>Passing in the following parameter to GSync will allow you to protect a column from overwrites:</p>
+<p>What this means is, if there is an empty cell in that column, and the input data wants to write a value in that cell, it will be written by GSheetSync. However, if a cell in that protected column is not blank (someone has purposely changed the value of the cell) then GSheetSync will not overwrite that cell.</p>
+<p>Passing in the following parameter to GSheetSync will allow you to protect a column from overwrites:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">optionalArgs</span> <span class="o">=</span> <span class="p">{</span><span class="nx">protectedFields</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Some column header&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="reading-data-from-a-sheet">
 <h3>2.2.5. Reading Data From A Sheet:<a class="headerlink" href="#reading-data-from-a-sheet" title="Permalink to this headline">¶</a></h3>
-<p>If you want to read the data on a sheet, and get it in the data structure compatible with GSync, you can call the method <code class="docutils literal"><span class="pre">readSheetData</span></code>.</p>
+<p>If you want to read the data on a sheet, and get it in the data structure compatible with GSheetSync, you can call the method <code class="docutils literal"><span class="pre">readSheetData</span></code>.</p>
 <p>This outputs said data structure:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">gsyncCompatibleData</span> <span class="o">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">readSheetData</span><span class="p">();</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">parsedData</span> <span class="o">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">readSheetData</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>You can pass this data directly into GSync and inject it into any of your Google Spreadsheets</p>
+<p>You can pass this data directly into GSheetSync and inject it into any of your Google Spreadsheets</p>
 </div>
 <div class="section" id="quering-from-big-query">
 <h3>2.2.6. Quering From Big Query:<a class="headerlink" href="#quering-from-big-query" title="Permalink to this headline">¶</a></h3>
 <p>You can create a SQL query in Apps Script, and use the results of that query to update a Spreadsheet.</p>
 <p>The following allows your to sync queried data:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">projectId</span> <span class="o">=</span> <span class="s2">&quot;PROJECT ID&quot;</span><span class="p">;</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">projectId</span> <span class="o">=</span> <span class="s2">&quot;YOUR PROJECT&#39;S ID&quot;</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">query</span><span class="o">:</span> <span class="p">(</span><span class="s1">&#39;SELECT id, title &#39;</span> <span class="o">+</span>
             <span class="s1">&#39;FROM `bigquery-public-data.samples.wikipedia` &#39;</span><span class="o">+</span>
@@ -380,15 +380,15 @@ The column containing the formula  requires the user to input a header.</p>
 <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">queryResults</span> <span class="o">=</span> <span class="nx">BigQuery</span><span class="p">.</span><span class="nx">Jobs</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">projectId</span><span class="p">);</span>
 
-<span class="kd">var</span> <span class="nx">gsyncCompatibleData</span> <span class="o">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">convertBigQueryResults</span><span class="p">(</span><span class="nx">queryResults</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">convertedResults</span> <span class="o">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">convertBigQueryResults</span><span class="p">(</span><span class="nx">queryResults</span><span class="p">);</span>
 
-<span class="nx">target</span><span class="p">.</span><span class="nx">sync</span><span class="p">(</span><span class="nx">gsyncCompatibleData</span><span class="p">);</span>
+<span class="nx">target</span><span class="p">.</span><span class="nx">sync</span><span class="p">(</span><span class="nx">convertedResults</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">&quot;PROJECT</span> <span class="pre">ID&quot;</span></code> is required for billing and quota purposes, this is the ID that the query will run under.</p>
-<p>There are two ways to get this ID:</p>
+<p><code class="docutils literal"><span class="pre">&quot;PROJECT</span> <span class="pre">ID&quot;</span></code> is required for billing and quota purposes, this is the ID that the query will run under. You can either use the Apps Script Project, which you had to create to be able to write scripts, or another project that you already have on the <a class="reference external" href="https://console.cloud.google.com">Google Cloud Console</a>, the latter will have the benefits of being able to control all of your querying and the BigQeury dataset’s permissions under one project ID.</p>
+<p>Getting the ID:</p>
 <ol class="arabic">
-<li><p class="first">Using your Apps Script Project ID</p>
+<li><p class="first">Through the Apps Script Project</p>
 <blockquote>
 <div><ul class="simple">
 <li>In Script Editor, “Resources” &gt; “Advanced Google Services…”</li>
@@ -398,10 +398,10 @@ The column containing the formula  requires the user to input a header.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Using your BigQuery Project Name</p>
+<li><p class="first">Using your other Google Cloud Platform Projects</p>
 <blockquote>
 <div><ul class="simple">
-<li>Simply use the name of the <a class="reference external" href="https://bigquery.cloud.google.com">BigQuery</a> project from which you are querying the data.</li>
+<li>On the <a class="reference external" href="https://console.cloud.google.com">Google Cloud Console</a> choose any project from the dropdown at the top left, and copy the project id for that project.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -411,23 +411,22 @@ The column containing the formula  requires the user to input a header.</p>
 <div class="section" id="important-notes">
 <h3>2.2.7. Important Notes:<a class="headerlink" href="#important-notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>GSync will only read data strictly below the formula and headers rows (which ever comes last).</li>
+<li>GSheetSync will only read data strictly below the formula and headers rows (which ever comes last).</li>
 <li>Best practise when adding formulae, is to have the formula row and headers row be together. This also demonstrated in the <a class="reference internal" href="#formula-example">formula example</a>.</li>
 <li>Any columns in which a formula is being inserted, must have a header, otherwise no formulae will be inserted for that column.</li>
 <li>Formulae are only inserted for newly added rows, any rows already in the sheet before syncing/injecting will be unaffected by formulae.</li>
-<li>Any columns with blank headers will be left as they are, GSync does nothing to blank header columns.</li>
+<li>Any columns with blank headers will be left as they are, GSheetSync does nothing to blank header columns.</li>
 <li>Any rows flagged as deleted by the sync method, can be undeleted by running the sync method again if they are become present in the input data. (The same isn’t possible if rows have been removed entirely).</li>
 </ul>
 </div>
 </div>
 <div class="section" id="debugging">
 <h2>2.3. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
-<p>GSync by default logs everything to console.
+<p>GSheetSync by default logs everything to console.
 You can view all the logs by going on “View” &gt; “Stackdriver Logging”.
-If this doesn’t help then Script Editor’s built in debugger allows your to dive into GSync’s source code wherever a GSync method is being calledm, simply set a breakpoint on a line calling GSync and dive in. A new tab will open in read-only mode containing the full GSync source code.</p>
-<p>If you find issues please raise them on —GIT HUB WILL GO HERE—
-ALSO READ THE CONTRIBUTING.md
-MAKE FIXES!</p>
+If this doesn’t help then Script Editor’s built in debugger allows your to dive into GSheetSync’s source code wherever a GSheetSync method is being calledm, simply set a breakpoint on a line calling GSheetSync and dive in. A new tab will open in read-only mode containing the full GSheetSync source code.</p>
+<p>If you find issues please raise them on <a class="reference external" href="https://github.com/nav-s-r/GSheetSync/issues">GitHub</a>.
+For some brownie points, read CONTRIBUTING.md and make fixes!</p>
 </div>
 </div>
 
