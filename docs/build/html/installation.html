@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Getting Started &mdash; GSync 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GSync 1 documentation" href="index.html"/>
+        <link rel="next" title="2. Complete Tutorial" href="guide.html"/>
+        <link rel="prev" title="Welcome to GSync’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GSync
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">1.1. Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-gsync">1.2. Installing GSync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enbaling-apis">1.3. Enbaling APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#injecting-data-to-a-sheet">1.4. Injecting data to a Sheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">2. Complete Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library.html">3. Complete API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GSync</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>1. Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>GSync is an Apps Script library to create, update and remove rows of data from a Google Sheets Spreadsheet. Inspired from the python module <a class="reference external" href="http://sheetsync.readthedocs.io/en/latest">sheetsync</a>.</p>
+<div class="section" id="motivation">
+<h2>1.1. Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Being able to query data using Google’s BigQuery API in Apps Script and write that data directly onto a Google Sheets Spreadsheet, with the sync/inject functionality <a class="reference external" href="http://sheetsync.readthedocs.io/en/latest">sheetsync</a> provided.</p>
+<p>This guide will get you set up to use GSync in Google’s Script Editor within a few minutes.</p>
+</div>
+<div class="section" id="installing-gsync">
+<h2>1.2. Installing GSync<a class="headerlink" href="#installing-gsync" title="Permalink to this headline">¶</a></h2>
+<p>First you need to open script editor. This is Google’s very own development environment.
+If you’re new to Apps Script:</p>
+<ul class="simple">
+<li>Go to your <a class="reference external" href="https://drive.google.com/drive">Google Drive</a></li>
+<li>Create a new spreadsheet. “New” &gt; “Google Sheets”</li>
+<li>From the spreadsheet open Script editor, “Tools” &gt; “Script Editor…”</li>
+<li>You should also read more about <a class="reference external" href="https://developers.google.com/apps-script/guides/bound">bound scripts</a> or <a class="reference external" href="https://developers.google.com/apps-script/guides/standalone">standalone scripts</a>, and about <a class="reference external" href="https://developers.google.com/apps-script">Apps Script</a> itself</li>
+</ul>
+<p>In Script Editor:</p>
+<ol class="arabic simple">
+<li>Click on the menu item “Resources” &gt; “Libraries”</li>
+<li>You should be prompted to enter a project name, choose a name and create the project</li>
+<li>In the “Add a Library” text box, enter <code class="docutils literal"><span class="pre">MVGtTt7Mo-6r8RMIqhlfeEXhvv_Un2E2U</span></code></li>
+<li>Choose a version from the dropdown box (best to pick the latest version)</li>
+<li>If you happen to have editor-level access for this library, ensure “Development Mode” is “off”, otherwise it does not matter</li>
+<li>Click the “Save” button</li>
+</ol>
+<img alt="_images/install_library.jpg" src="_images/install_library.jpg" />
+</div>
+<div class="section" id="enbaling-apis">
+<h2>1.3. Enbaling APIs<a class="headerlink" href="#enbaling-apis" title="Permalink to this headline">¶</a></h2>
+<p>Two Google Advances API Services will need to be enabled before you continue with GSync:</p>
+<ul class="simple">
+<li>Sheets API (V4)</li>
+<li>BigQuery API (V2)</li>
+</ul>
+<p>In Script Editor:</p>
+<ul class="simple">
+<li>Go to “Resources” &gt; “Advanced Google Services”</li>
+<li>Find and enable “BigQuery API”</li>
+<li>Find and enable “Google Sheets API”</li>
+<li>Follow the link at the bottom to “Google API Console”</li>
+</ul>
+<img alt="_images/toggle_apis.jpg" src="_images/toggle_apis.jpg" />
+<p>In API Console:</p>
+<p>Click on “ENABLE APIS AND SERVICES”</p>
+<img alt="_images/google_dashboard.jpg" src="_images/google_dashboard.jpg" />
+<p>Search for “sheets” and follow the link</p>
+<img alt="_images/sheets_search.jpg" src="_images/sheets_search.jpg" />
+<p>Enable the API for your project</p>
+<img alt="_images/enable_sheets.jpg" src="_images/enable_sheets.jpg" />
+<p>Repeat this for “BigQuery API” (ignoring “Bigquery Data Transfer API”)</p>
+</div>
+<div class="section" id="injecting-data-to-a-sheet">
+<h2>1.4. Injecting data to a Sheet<a class="headerlink" href="#injecting-data-to-a-sheet" title="Permalink to this headline">¶</a></h2>
+<p>GSync accepts data in a specific format.
+The input data must be an array of JSON object literals. Each object within the array represents one row of data. Each key value pair represents a column header and its cell value.</p>
+<p>The following array represents 3 rows of data, mapped by their column headers:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Alexander&quot;</span><span class="p">,</span> <span class="s2">&quot;Class Level&quot;</span><span class="o">:</span> <span class="s2">&quot;1. Freshman&quot;</span><span class="p">,</span> <span class="s2">&quot;Extracurricular Activity&quot;</span><span class="o">:</span> <span class="s2">&quot;Basketball&quot;</span><span class="p">},</span>
+  <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Weeknd&quot;</span><span class="p">,</span> <span class="s2">&quot;Extracurricular Activity&quot;</span><span class="o">:</span> <span class="s2">&quot;Singing&quot;</span><span class="p">},</span>
+  <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Dybala&quot;</span><span class="p">,</span> <span class="s2">&quot;Class Level&quot;</span><span class="o">:</span> <span class="s2">&quot;World&quot;</span><span class="p">,</span> <span class="s2">&quot;Extracurricular Activity&quot;</span><span class="o">:</span> <span class="s2">&quot;Football&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>To inject this data into a spreadsheet, use the following code:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">injectData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Alexander&quot;</span><span class="p">,</span> <span class="s2">&quot;Class Level&quot;</span><span class="o">:</span> <span class="s2">&quot;1. Freshman&quot;</span><span class="p">,</span> <span class="s2">&quot;Extracurricular Activity&quot;</span><span class="o">:</span> <span class="s2">&quot;Basketball&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Weeknd&quot;</span><span class="p">,</span> <span class="s2">&quot;Extracurricular Activity&quot;</span><span class="o">:</span> <span class="s2">&quot;Singing&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Dybala&quot;</span><span class="p">,</span> <span class="s2">&quot;Class Level&quot;</span><span class="o">:</span> <span class="s2">&quot;World&quot;</span><span class="p">,</span> <span class="s2">&quot;Extracurricular Activity&quot;</span><span class="o">:</span> <span class="s2">&quot;Football&quot;</span><span class="p">}</span>
+  <span class="p">];</span>
+
+  <span class="kd">var</span> <span class="nx">keyHeader</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">];</span>  <span class="c1">// If your data table uses multiple keys, they all must be provided</span>
+  <span class="kd">var</span> <span class="nx">headerRow</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">();</span>
+
+
+  <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GSync</span><span class="p">.</span><span class="nx">GSyncTable</span><span class="p">(</span><span class="nx">sheet</span><span class="p">,</span>
+                                    <span class="nx">headerRow</span><span class="p">,</span>
+                                    <span class="nx">keyHeader</span><span class="p">);</span>
+
+  <span class="nx">target</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+  <span class="c1">// NOTE: There are multiple ways to instantiate a google sheet object</span>
+  <span class="c1">//       Any combination of the following would also work:</span>
+  <span class="c1">//         SpreadsheetApp.openByUrl(YOUR SPREADSHEET URL).getSheetByName(YOUR SHEET NAME)</span>
+  <span class="c1">//         SpreadsheetApp.openById(YOUR SPREADSHEET ID).getSheetByName(YOUR SHEET NAME)</span>
+</pre></div>
+</div>
+<p>This produces the following result</p>
+<img alt="_images/injecting_data.jpg" src="_images/injecting_data.jpg" />
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="guide.html" class="btn btn-neutral float-right" title="2. Complete Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to GSync’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Navroj Singh.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

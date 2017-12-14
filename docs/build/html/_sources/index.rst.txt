@@ -1,0 +1,10 @@
+Welcome to GSync's documentation!
+=================================
+
+.. toctree::
+   :maxdepth: 5
+   :numbered:
+   :caption: Contents:
+
+   installation
+   guide
