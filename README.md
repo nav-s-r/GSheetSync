@@ -41,7 +41,7 @@ For the purposes of this tutorial, let's create a bound script, a script tied to
 * `convertBigQueryResults` - Takes a JSON object literal containing qeury results, acquired using Google's Big query API, and changes the results into the data format accepted by GSheetSync. Creating an array of object literals using column headers to map a row's cell values.
 * `sortByHeaders` - Sorts the sheet, in ascending or descending order, using the column headers.
 
-##### For the complete user guide, follow this link: *some_link_to_full_docs
+##### For the complete user guide, follow [this link](http://gsheetsync.readthedocs.io/en/latest)
 
 ## Enabling APIs
 
@@ -128,7 +128,7 @@ function injectData() {
 
 ## Complete Documentation
 
-Please visit *some_link for the full guide and documetation for GSheetSync
+For the complete user guide, follow [this link](http://gsheetsync.readthedocs.io/en/latest)
 
 ## Known Bugs
 
@@ -149,4 +149,3 @@ Google has documented some common errors here: https://developers.google.com/app
 ## License
 
 See [LICENSE](LICENSE.txt) here.
-

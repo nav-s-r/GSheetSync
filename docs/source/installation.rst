@@ -11,7 +11,7 @@ This guide will get you set up to use GSheetSync in Google's Script Editor withi
 .. _sheetsync: http://sheetsync.readthedocs.io/en/latest
 
 Installing GSheetSync
------------------
+----------------------
 First you need to open script editor. This is Google's very own development environment.
 If you're new to Apps Script:
 
